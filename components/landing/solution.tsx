@@ -1,3 +1,7 @@
+"use client"
+
+import { GlassCard } from "@/components/ui/glass-card"
+import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
 
 export function Solution() {
@@ -9,24 +13,39 @@ export function Solution() {
     ]
 
     return (
-        <section id="solution" className="py-20">
+        <section id="solution" className="py-24">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold tracking-tight mb-8">What CompliTrack Actually Does</h2>
-
-                <div className="max-w-3xl mx-auto bg-card rounded-2xl border shadow-sm p-8 md:p-12">
-                    <p className="text-lg mb-8 text-muted-foreground">
-                        CompliTrack is a simple tool that gives you centralized visibility and peace of mind.
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Built for Peace of Mind.</h2>
+                    <p className="text-lg text-muted-foreground">
+                        CompliTrack is designed to be boringly reliable. It just works.
                     </p>
+                </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <GlassCard className="max-w-3xl mx-auto p-8 md:p-12 text-left" gradient>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {features.map((feature, index) => (
-                            <div key={index} className="flex items-start gap-3">
-                                <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0" />
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-start gap-4"
+                            >
+                                <div className="mt-1 bg-green-500/10 p-1 rounded-full">
+                                    <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
+                                </div>
                                 <span className="text-lg font-medium">{feature}</span>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </GlassCard>
             </div>
         </section>
     )

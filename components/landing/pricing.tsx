@@ -1,63 +1,76 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { ComingSoon } from "@/components/ui/coming-soon"
+import { GlassCard } from "@/components/ui/glass-card"
+import { motion } from "framer-motion"
 import { Check } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function Pricing() {
     return (
-        <section id="pricing" className="py-20 bg-muted/50">
-            <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold tracking-tight mb-4">Simple, Transparent Pricing</h2>
-                <p className="text-lg text-muted-foreground mb-12">One price. All features. No hidden fees.</p>
+        <section id="pricing" className="py-24 relative">
+            <div className="container mx-auto px-4 text-center relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Simple Pricing.</h2>
+                    <p className="text-lg text-muted-foreground">One price. All features. No hidden fees.</p>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     {/* Monthly */}
-                    <Card className="flex flex-col">
-                        <CardHeader>
-                            <CardTitle>Monthly</CardTitle>
-                            <CardDescription>Flexible for getting started</CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                            <div className="text-4xl font-bold mb-4">₹499<span className="text-lg font-normal text-muted-foreground">/mo</span></div>
-                            <ul className="space-y-2 text-left">
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Unlimited Deadlines</li>
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Email Reminders</li>
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Deadline History</li>
-                            </ul>
-                        </CardContent>
-                        <CardFooter>
-                            <ComingSoon trigger={<Button className="w-full">Start Free Trial</Button>} />
-                        </CardFooter>
-                    </Card>
+                    <GlassCard className="flex flex-col text-left border-border/50">
+                        <div className="mb-8">
+                            <h3 className="text-lg font-medium text-muted-foreground mb-2">Monthly</h3>
+                            <div className="flex items-baseline gap-1">
+                                <span className="text-4xl font-bold">₹499</span>
+                                <span className="text-muted-foreground">/mo</span>
+                            </div>
+                        </div>
+                        <ul className="space-y-4 mb-8 flex-1">
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-green-500" /> Unlimited Deadlines</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-green-500" /> Email Reminders</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-green-500" /> Deadline History</li>
+                        </ul>
+                        <ComingSoon trigger={<Button variant="outline" className="w-full h-12">Start Free Trial</Button>} />
+                    </GlassCard>
 
                     {/* Yearly */}
-                    <Card className="flex flex-col border-primary shadow-lg relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    <GlassCard className="flex flex-col text-left border-primary/50 relative overflow-hidden" gradient>
+                        <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-bl-xl">
                             BEST VALUE
                         </div>
-                        <CardHeader>
-                            <CardTitle>Yearly</CardTitle>
-                            <CardDescription>Commit to compliance</CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1">
-                            <div className="text-4xl font-bold mb-4">₹4,999<span className="text-lg font-normal text-muted-foreground">/yr</span></div>
-                            <ul className="space-y-2 text-left">
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> 2 Months Free</li>
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Unlimited Deadlines</li>
-                                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" /> Priority Support</li>
-                            </ul>
-                        </CardContent>
-                        <CardFooter>
-                            <ComingSoon trigger={<Button className="w-full" variant="default">Start Free Trial</Button>} />
-                        </CardFooter>
-                    </Card>
+                        <div className="mb-8">
+                            <h3 className="text-lg font-medium text-muted-foreground mb-2">Yearly</h3>
+                            <div className="flex items-baseline gap-1">
+                                <span className="text-4xl font-bold">₹4,999</span>
+                                <span className="text-muted-foreground">/yr</span>
+                            </div>
+                            <p className="text-sm text-green-600 font-medium mt-2">Save ₹1,000 per year</p>
+                        </div>
+                        <ul className="space-y-4 mb-8 flex-1">
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-primary" /> 2 Months Free</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-primary" /> Unlimited Deadlines</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-primary" /> Priority Support</li>
+                        </ul>
+                        <ComingSoon trigger={<Button className="w-full h-12 font-semibold">Start Free Trial</Button>} />
+                    </GlassCard>
                 </div>
 
-                <div className="mt-12 p-6 bg-background rounded-xl border inline-block mx-auto">
-                    <p className="text-xl font-medium text-foreground">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-16 inline-block"
+                >
+                    <div className="px-6 py-3 rounded-full bg-destructive/10 text-destructive border border-destructive/20 text-lg font-medium">
                         "One missed deadline costs more than a year of CompliTrack."
-                    </p>
-                </div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     )
