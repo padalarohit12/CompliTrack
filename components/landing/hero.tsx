@@ -83,53 +83,90 @@ export function Hero() {
                     </Link>
                 </motion.div>
 
-                {/* Ghost Dashboard Visual */}
+                {/* High-Fidelity Dashboard Mockup */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95, y: 40 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="relative mx-auto max-w-5xl rounded-xl border bg-background/50 shadow-2xl backdrop-blur-sm overflow-hidden"
+                    className="relative mx-auto max-w-5xl rounded-xl border border-white/10 bg-background/40 shadow-2xl backdrop-blur-xl overflow-hidden"
                 >
-                    <div className="absolute top-0 left-0 right-0 h-10 border-b bg-muted/20 flex items-center px-4 gap-2">
-                        <div className="h-3 w-3 rounded-full bg-red-400/20" />
-                        <div className="h-3 w-3 rounded-full bg-yellow-400/20" />
-                        <div className="h-3 w-3 rounded-full bg-green-400/20" />
+                    {/* Fake Browser Header */}
+                    <div className="absolute top-0 left-0 right-0 h-10 border-b border-white/10 bg-black/20 flex items-center px-4 gap-2 z-20">
+                        <div className="h-3 w-3 rounded-full bg-red-500/80" />
+                        <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
+                        <div className="h-3 w-3 rounded-full bg-green-500/80" />
+                        <div className="ml-4 h-5 w-64 bg-white/5 rounded-md hidden sm:block" />
                     </div>
 
-                    <div className="p-8 pt-16 grid gap-6 md:grid-cols-3">
-                        {/* Fake Sidebar */}
-                        <div className="hidden md:block space-y-4">
-                            <div className="h-8 w-32 bg-muted/20 rounded-md animate-pulse" />
+                    <div className="flex h-[400px] pt-10">
+                        {/* Sidebar */}
+                        <div className="w-48 hidden md:flex flex-col border-r border-white/10 bg-black/20 p-4 gap-4">
+                            <div className="h-8 w-8 rounded bg-primary/20 mb-4" />
                             <div className="space-y-2">
-                                <div className="h-8 w-full bg-muted/10 rounded-md" />
-                                <div className="h-8 w-full bg-primary/5 border border-primary/10 rounded-md" />
-                                <div className="h-8 w-full bg-muted/10 rounded-md" />
+                                <div className="h-8 w-full rounded bg-primary/10 text-primary-foreground/80 flex items-center px-3 text-sm font-medium">Dashboard</div>
+                                <div className="h-8 w-full rounded hover:bg-white/5 text-muted-foreground flex items-center px-3 text-sm transition-colors">Deadlines</div>
+                                <div className="h-8 w-full rounded hover:bg-white/5 text-muted-foreground flex items-center px-3 text-sm transition-colors">Calendar</div>
+                                <div className="h-8 w-full rounded hover:bg-white/5 text-muted-foreground flex items-center px-3 text-sm transition-colors">Settings</div>
                             </div>
                         </div>
 
-                        {/* Fake Content */}
-                        <div className="md:col-span-2 space-y-6">
-                            <div className="flex justify-between items-center">
-                                <div className="h-8 w-48 bg-muted/20 rounded-md" />
-                                <div className="h-8 w-24 bg-primary/20 rounded-full" />
+                        {/* Main Content */}
+                        <div className="flex-1 p-6 bg-gradient-to-br from-background/50 to-background/80 relative">
+                            {/* Header */}
+                            <div className="flex justify-between items-end mb-8">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-white mb-2">Welcome back, Rohit</h3>
+                                    <p className="text-muted-foreground">You have 2 upcoming deadlines.</p>
+                                </div>
+                                <div className="text-right hidden sm:block">
+                                    <div className="text-sm text-muted-foreground">Compliance Score</div>
+                                    <div className="text-2xl font-bold text-green-500">92%</div>
+                                </div>
                             </div>
 
-                            <div className="space-y-3">
-                                {[1, 2, 3].map((i) => (
-                                    <div key={i} className="flex items-center gap-4 p-4 rounded-lg border bg-card/50">
-                                        <div className="h-10 w-10 rounded-full bg-muted/20 shrink-0" />
-                                        <div className="space-y-2 flex-1">
-                                            <div className="h-4 w-1/3 bg-muted/20 rounded" />
-                                            <div className="h-3 w-1/4 bg-muted/10 rounded" />
-                                        </div>
-                                        <div className="h-6 w-20 bg-red-500/10 rounded-full" />
+                            {/* Deadline Cards */}
+                            <div className="space-y-4">
+                                {/* Card 1: Overdue/Urgent */}
+                                <div className="flex items-center gap-4 p-4 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 transition-colors">
+                                    <div className="h-10 w-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
+                                        <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                                     </div>
-                                ))}
+                                    <div className="flex-1 text-left">
+                                        <div className="font-semibold text-white">GST Return (GSTR-3B)</div>
+                                        <div className="text-xs text-red-300">Due Today • Penalty Risk: High</div>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-xs font-medium">Urgent</div>
+                                </div>
+
+                                {/* Card 2: Upcoming */}
+                                <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                                    <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                                        <div className="h-2 w-2 rounded-full bg-blue-500" />
+                                    </div>
+                                    <div className="flex-1 text-left">
+                                        <div className="font-semibold text-white">TDS Payment</div>
+                                        <div className="text-xs text-muted-foreground">Due in 5 days</div>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-medium">Upcoming</div>
+                                </div>
+
+                                {/* Card 3: Completed */}
+                                <div className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] opacity-60">
+                                    <div className="h-10 w-10 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
+                                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                    </div>
+                                    <div className="flex-1 text-left">
+                                        <div className="font-semibold text-muted-foreground">Professional Tax</div>
+                                        <div className="text-xs text-muted-foreground">Paid on Jun 15</div>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-medium">Paid</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent pointer-events-none" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none" />
                 </motion.div>
             </div>
         </section>
