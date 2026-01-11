@@ -11,8 +11,9 @@ export function Hero() {
         <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32">
             {/* Background Gradients */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none -z-10">
-                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
-                <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+                <div className="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-40 mix-blend-screen animate-pulse" />
+                <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] opacity-40 mix-blend-screen" />
+                <div className="absolute bottom-[-10%] left-[20%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] opacity-30 mix-blend-screen" />
             </div>
 
             <div className="container mx-auto px-4 text-center">
