@@ -11,11 +11,16 @@ import Link from "next/link"
 export function Hero() {
     return (
         <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32">
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none -z-10">
-                <div className="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-40 mix-blend-screen animate-pulse" />
-                <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] opacity-40 mix-blend-screen" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] opacity-30 mix-blend-screen" />
+            {/* Million Dollar Background Architecture */}
+            <div className="absolute inset-0 -z-10 h-full w-full bg-background overflow-hidden">
+                {/* 1. The Grid (Structure) */}
+                <div className="absolute inset-0 bg-grid-white/5 bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]" />
+
+                {/* 2. The Spotlight (Focus) */}
+                <div className="absolute md:-top-[20%] -top-[10%] left-1/2 -translate-x-1/2 md:w-[1200px] w-[600px] md:h-[800px] h-[400px] rounded-[100%] bg-gradient-to-b from-primary/30 via-blue-500/10 to-transparent blur-[90px] opacity-70" />
+
+                {/* 3. The Stars (Detail - Subtle Noise) */}
+                <div className="absolute inset-0 bg-dot-white/10 bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-20" />
             </div>
 
             <div className="container mx-auto px-4 text-center">
