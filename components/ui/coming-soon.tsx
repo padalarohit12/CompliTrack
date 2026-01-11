@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 interface ComingSoonProps {
     trigger?: React.ReactNode
@@ -41,9 +42,18 @@ export function ComingSoon({
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>{title}</DialogTitle>
+                    {!submitted && (
+                        <div className="mx-auto w-[150px] h-[150px] mb-2">
+                            <DotLottieReact
+                                src="https://lottie.host/0e1f3fa7-84cd-4804-b082-2d233ec2e7e5/MA7YfOuzIe.lottie"
+                                loop
+                                autoplay
+                            />
+                        </div>
+                    )}
+                    <DialogTitle>{submitted ? "You're on the list!" : title}</DialogTitle>
                     <DialogDescription>
-                        {description}
+                        {submitted ? "We'll be in touch soon." : description}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -63,9 +73,15 @@ export function ComingSoon({
                         <Button type="submit">Notify Me</Button>
                     </form>
                 ) : (
-                    <div className="py-6 text-center text-green-600">
-                        <p className="font-medium">Thanks! You're on the list.</p>
-                        <p className="text-sm text-muted-foreground mt-1">We'll be in touch soon.</p>
+                    <div className="flex flex-col items-center justify-center py-4">
+                        <div className="w-[150px] h-[150px]">
+                            <DotLottieReact
+                                src="https://lottie.host/8e9aa10a-edd7-4d7b-b675-1ea14f50bce9/GTgfkRFqUP.lottie"
+                                loop
+                                autoplay
+                            />
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-2">Watch your inbox for updates.</p>
                     </div>
                 )}
             </DialogContent>

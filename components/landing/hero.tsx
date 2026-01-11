@@ -1,5 +1,7 @@
 "use client"
 
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+
 import { Button } from "@/components/ui/button"
 import { ComingSoon } from "@/components/ui/coming-soon"
 import { motion } from "framer-motion"
@@ -18,9 +20,22 @@ export function Hero() {
 
             <div className="container mx-auto px-4 text-center">
                 <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-[180px] h-[180px] mx-auto -mb-10 relative z-10"
+                >
+                    <DotLottieReact
+                        src="https://lottie.host/6d38e4b5-1255-4547-b53e-d7cc919184bc/xGZ9aKzxzn.lottie"
+                        loop
+                        autoplay
+                    />
+                </motion.div>
+
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="inline-flex items-center gap-2 rounded-full border bg-background/50 backdrop-blur-sm px-3 py-1 text-sm text-muted-foreground mb-8"
                 >
                     <span className="flex h-2 w-2 rounded-full bg-green-500" />

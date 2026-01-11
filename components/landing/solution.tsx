@@ -3,6 +3,7 @@
 import { GlassCard } from "@/components/ui/glass-card"
 import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 export function Solution() {
     const features = [
@@ -27,23 +28,35 @@ export function Solution() {
                     </p>
                 </motion.div>
 
-                <GlassCard className="max-w-3xl mx-auto p-8 md:p-12 text-left" gradient>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="flex items-start gap-4"
-                            >
-                                <div className="mt-1 bg-green-500/10 p-1 rounded-full">
-                                    <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
-                                </div>
-                                <span className="text-lg font-medium">{feature}</span>
-                            </motion.div>
-                        ))}
+                <GlassCard className="max-w-3xl mx-auto p-8 md:p-12 text-left bg-gradient-to-br from-primary/5 via-background/40 to-background/40" gradient>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div className="space-y-6">
+                            {features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="flex items-start gap-4"
+                                >
+                                    <div className="mt-1 bg-green-500/10 p-1 rounded-full">
+                                        <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
+                                    </div>
+                                    <span className="text-lg font-medium">{feature}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                        <div className="hidden md:flex justify-center flex-col items-center">
+                            <div className="w-[200px] h-[200px]">
+                                <DotLottieReact
+                                    src="https://lottie.host/8e9aa10a-edd7-4d7b-b675-1ea14f50bce9/GTgfkRFqUP.lottie"
+                                    loop
+                                    autoplay
+                                />
+                            </div>
+                            <p className="text-sm text-green-500 font-medium">Compliance Score: 100%</p>
+                        </div>
                     </div>
                 </GlassCard>
             </div>
