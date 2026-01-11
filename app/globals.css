@@ -168,3 +168,17 @@
 .dark .bg-dot-pattern {
   background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
 }
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 25s linear infinite;
+}

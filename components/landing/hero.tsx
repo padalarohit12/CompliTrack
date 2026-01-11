@@ -66,21 +66,54 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
+                    className="flex flex-col gap-6 justify-center items-center mb-16"
                 >
-                    <ComingSoon
-                        trigger={
-                            <Button size="lg" className="h-12 px-8 text-base rounded-full group">
-                                Start Free Trial
-                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <ComingSoon
+                            trigger={
+                                <Button size="lg" className="h-12 px-8 text-base rounded-full group">
+                                    Start Free Trial
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Button>
+                            }
+                        />
+                        <Link href="#how-it-works">
+                            <Button variant="ghost" size="lg" className="h-12 px-8 text-base rounded-full">
+                                See How It Works
                             </Button>
-                        }
-                    />
-                    <Link href="#how-it-works">
-                        <Button variant="ghost" size="lg" className="h-12 px-8 text-base rounded-full">
-                            See How It Works
-                        </Button>
-                    </Link>
+                        </Link>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 className="h-4 w-4 text-green-500" />
+                        <span>No credit card required</span>
+                        <span className="mx-2">•</span>
+                        <CheckCircle2 className="h-4 w-4 text-green-500" />
+                        <span>14-day free trial</span>
+                    </div>
+
+                    {/* Infinite Ticker */}
+                    <div className="pt-8 w-full max-w-4xl overflow-hidden relative">
+                        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
+                        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
+
+                        <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground mb-4">
+                            <span>Integrates seamlessly with:</span>
+                        </div>
+                        <div className="flex gap-12 animate-infinite-scroll whitespace-nowrap opacity-70">
+                            {["WhatsApp", "Gmail", "Tally", "Excel", "Zoho", "Outlook", "Slack", "QuickBooks"].map((tool) => (
+                                <span key={tool} className="text-lg font-semibold flex items-center gap-2">
+                                    {/* Placeholder for icons - using text for cleaner look without assets */}
+                                    {tool}
+                                </span>
+                            ))}
+                            {/* Duplicate for infinite effect */}
+                            {["WhatsApp", "Gmail", "Tally", "Excel", "Zoho", "Outlook", "Slack", "QuickBooks"].map((tool) => (
+                                <span key={`${tool}-dup`} className="text-lg font-semibold flex items-center gap-2">
+                                    {tool}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* High-Fidelity Dashboard Mockup */}
@@ -127,7 +160,10 @@ export function Hero() {
                             {/* Deadline Cards */}
                             <div className="space-y-4">
                                 {/* Card 1: Overdue/Urgent */}
-                                <div className="flex items-center gap-4 p-4 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 transition-colors">
+                                <motion.div
+                                    whileHover={{ scale: 1.02, x: 5 }}
+                                    className="flex items-center gap-4 p-4 rounded-xl border border-red-500/20 bg-red-500/5 cursor-pointer transition-colors"
+                                >
                                     <div className="h-10 w-10 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
                                         <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                                     </div>
@@ -136,10 +172,13 @@ export function Hero() {
                                         <div className="text-xs text-red-300">Due Today • Penalty Risk: High</div>
                                     </div>
                                     <div className="px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-xs font-medium">Urgent</div>
-                                </div>
+                                </motion.div>
 
                                 {/* Card 2: Upcoming */}
-                                <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                                <motion.div
+                                    whileHover={{ scale: 1.02, x: 5 }}
+                                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5 cursor-pointer transition-colors"
+                                >
                                     <div className="h-10 w-10 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
                                         <div className="h-2 w-2 rounded-full bg-blue-500" />
                                     </div>
@@ -148,10 +187,13 @@ export function Hero() {
                                         <div className="text-xs text-muted-foreground">Due in 5 days</div>
                                     </div>
                                     <div className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-medium">Upcoming</div>
-                                </div>
+                                </motion.div>
 
                                 {/* Card 3: Completed */}
-                                <div className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] opacity-60">
+                                <motion.div
+                                    whileHover={{ scale: 1.02, x: 5 }}
+                                    className="flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] opacity-60 cursor-pointer"
+                                >
                                     <div className="h-10 w-10 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
                                         <CheckCircle2 className="h-5 w-5 text-green-500" />
                                     </div>
@@ -160,7 +202,7 @@ export function Hero() {
                                         <div className="text-xs text-muted-foreground">Paid on Jun 15</div>
                                     </div>
                                     <div className="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-medium">Paid</div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
